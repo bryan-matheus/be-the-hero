@@ -6,7 +6,7 @@ const SessionController = require("./controllers/SessionController");
 const IncidentController = require("./controllers/IncidentController");
 
 routes.get("/ongs", OngController.index);
-routes.store("/ongs", OngController.index);
+routes.post("/ongs", OngController.store);
 
 routes.get("/profile", ProfileController.index);
 
