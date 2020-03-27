@@ -12,16 +12,17 @@ import api from "../../services/api";
 export default function Logon() {
   const [id, setId] = useState("");
   const history = useHistory();
+
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const response = api.post("/session", { id });
-
+      const response = await api.post("/sessions", { id });
       localStorage.setItem("ongId", id);
       localStorage.setItem("ongName", response.data.name);
       history.push("/profile");
     } catch (err) {
       alert("Falha no Login. Tente novamente!");
+      console.log(err);
     }
   }
 

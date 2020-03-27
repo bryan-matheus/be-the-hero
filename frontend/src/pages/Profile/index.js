@@ -16,21 +16,22 @@ export default function Register() {
     api
       .get("/profile", {
         headers: {
-          authorization: ongId
+          Authorization: ongId
         }
       })
       .then(response => setIncidents(response.data));
   }, [ongId]);
 
-  async function handleDeleteIncident(id) {
+  async function handleDeleteIncident(idCase) {
     try {
-      await api.delete(`/incidents/${id}`, {
+      await api.delete(`/incidents/${idCase}`, {
         headers: {
-          authorization: id
+          Authorization: ongId
         }
       });
-      setIncidents(incidents.filter(incident => incident.id !== id));
+      setIncidents(incidents.filter(incident => incident.id !== idCase));
     } catch (err) {
+      console.log(err);
       alert("Erro ao deletar");
     }
   }
